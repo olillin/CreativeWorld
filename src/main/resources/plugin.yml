@@ -1,0 +1,28 @@
+name: CreativeWorld
+version: '${version}'
+main: dev.hoodieboi.creativeworld.CreativeWorld
+api-version: 1.19
+prefix: CreativeWorld
+authors: [ OliTheHoodieBoi ]
+description: Add easy switching between survival and creative worlds
+
+depend: [ Multiverse-Core, Multiverse-NetherPortals ]
+
+commands:
+  creative:
+    description: Teleport to the creative world
+    permission: creativeworld.creative
+  survival:
+    description: Teleport to the survival world
+    permission: creativeworld.survival
+  creativeworld:
+    description: Reload command
+    permission: creativeworld.reload
+
+permissions:
+  creativeworld.creative:
+    description: Allows you to teleport to the creative world
+  creativeworld.survival:
+    description: Allows you to teleport to the creative world
+  creativeworld.reload:
+    description: Allows you to reload the CreativeWorld config

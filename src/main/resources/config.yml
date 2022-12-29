@@ -1,0 +1,15 @@
+worlds:
+  survival:
+    - world
+    - world_nether
+    - world_the_end
+  creative:
+    - creative
+    - creative_nether
+    - creative_the_end
+
+messages:
+  teleport_creative: "&aWelcome to creative."
+  teleport_survival: "&aWelcome to survival."
+  already_in_creative: "&cYou are already in creative."
+  already_in_survival: "&cYou are already in survival."
