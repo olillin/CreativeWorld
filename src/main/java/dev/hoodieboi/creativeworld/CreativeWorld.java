@@ -8,6 +8,9 @@ import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 import net.kyori.adventure.text.format.TextDecoration;
 import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
+import net.luckperms.api.LuckPerms;
+import net.luckperms.api.LuckPermsProvider;
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.configuration.ConfigurationSection;
@@ -28,12 +31,15 @@ public final class CreativeWorld extends JavaPlugin {
 
     private ConfigurationSection messages;
 
+    private boolean lpEnabled;
+
     @Override
     public void onEnable() {
         // Plugin startup logic
         registerCommands();
         locationManager = new LocationManager(this);
         reloadConfig();
+        lpEnabled = Bukkit.getServicesManager().getRegistration(LuckPerms.class) != null;
     }
 
     @Override
@@ -142,5 +148,9 @@ public final class CreativeWorld extends JavaPlugin {
             return text("Could not show message ").color(NamedTextColor.RED).append(text(key).decorate(TextDecoration.ITALIC));
         }
         return LegacyComponentSerializer.legacyAmpersand().deserialize(messages.getString(key));
+    }
+
+    public boolean luckPermsEnabled() {
+        return lpEnabled;
     }
 }

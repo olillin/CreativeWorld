@@ -29,9 +29,6 @@ public class TeleportCommand implements CommandExecutor {
                 player.sendMessage(plugin.getMessage("already_in_creative"));
                 return true;
             }
-            // Save survival location
-            plugin.getLocationManager().saveLocation(player, "survival");
-
             // Teleport to creative world
             Location location = plugin.getLocationManager().getLocation(player, "creative");
             List<World> creativeWorlds = plugin.getCreativeWorlds();
@@ -50,9 +47,7 @@ public class TeleportCommand implements CommandExecutor {
                 player.sendMessage(plugin.getMessage("already_in_survival"));
                 return true;
             }
-            // Save creative location
-            plugin.getLocationManager().saveLocation(player, "creative");
-
+            // Remove player from group
             // Teleport to survival world
             Location location = plugin.getLocationManager().getLocation(player, "survival");
             List<World> survivalWorlds = plugin.getSurvivalWorlds();

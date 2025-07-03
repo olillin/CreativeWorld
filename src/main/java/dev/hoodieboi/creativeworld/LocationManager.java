@@ -1,10 +1,12 @@
 package dev.hoodieboi.creativeworld;
 
+import net.luckperms.api.LuckPerms;
+import net.luckperms.api.LuckPermsProvider;
+import net.luckperms.api.model.user.User;
 import org.bukkit.Location;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
-import org.bukkit.plugin.Plugin;
 import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
@@ -13,9 +15,9 @@ import java.io.IOException;
 
 public class LocationManager {
 
-    private final Plugin plugin;
+    private final CreativeWorld plugin;
     private final String locationsFileName;
-    public LocationManager(Plugin plugin) {
+    public LocationManager(CreativeWorld plugin) {
         this.plugin = plugin;
         locationsFileName = "locations.yml";
     }
@@ -36,5 +38,14 @@ public class LocationManager {
             return null;
         FileConfiguration data = YamlConfiguration.loadConfiguration(file);
         return data.getLocation(player.getUniqueId() + "." + key);
+    }
+
+    public void changedWorld(Player player, String fromWorld) {
+        saveLocation(player, fromWorld);
+        if (plugin.luckPermsEnabled()) {
+            LuckPerms lp = LuckPermsProvider.get();
+            User user = lp.getPlayerAdapter(Player.class).getUser(player);
+            user.setPrimaryGroup(plugin.getGroup(fromWorld));
+        }
     }
 }

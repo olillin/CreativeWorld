@@ -7,6 +7,7 @@ authors: [ OliTheHoodieBoi ]
 description: Add easy switching between survival and creative worlds
 
 depend: [ Multiverse-Core, Multiverse-NetherPortals ]
+softdepend: [ LuckPerms ]
 
 commands:
   creative:

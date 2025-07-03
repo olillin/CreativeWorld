@@ -4,7 +4,7 @@ plugins {
 }
 
 group = 'dev.hoodieboi.creativeworld'
-version = '1.0.0'
+version = '1.1.0'
 
 repositories {
     mavenCentral()
@@ -19,6 +19,7 @@ repositories {
 dependencies {
     compileOnly 'io.papermc.paper:paper-api:1.19.3-R0.1-SNAPSHOT'
     compileOnly 'com.onarandombox.multiversecore:Multiverse-Core:4.3.1'
+    compileOnly 'net.luckperms:api:5.4'
     implementation 'me.lucko:commodore:2.2'
     implementation "net.kyori:adventure-text-serializer-legacy:4.12.0"
 }

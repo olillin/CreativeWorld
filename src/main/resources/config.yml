@@ -8,6 +8,9 @@ worlds:
     - creative_nether
     - creative_the_end
 
+group_survival: survival
+group_creative: creative
+
 messages:
   teleport_creative: "&aWelcome to creative."
   teleport_survival: "&aWelcome to survival."
